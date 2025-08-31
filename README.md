@@ -1,13 +1,15 @@
-# Pāramitā
+# Neo-Pāramitā
+
+*Forked from https://github.com/3TUSK/Paramita*
 
 > When you still can't decide which loader and which version to develop with... why not choose *ALL OF THEM*?
 
-This is a multi-project template for those who wish to develop a single Minecraft mod on multiple Minecraft versions and 
-multiple loaders, altogether in a single place. 
+This is a multi-project template for those who wish to develop a single Minecraft mod on multiple Minecraft versions ~~and 
+multiple loaders~~ (forge/neoforge only), altogether in a single place. 
 
 As you can see, this template is definitely NOT for newcomers. 
-Users of this template are expected to have experiences on modding two or more Minecraft versions, as well as 
-experiences with different modding frameworks (Fabric, Forge, Quilt, ...)
+Users of this template are expected to have experiences on modding two or more Minecraft versions ~~, as well as 
+experiences with different modding frameworks (Fabric, Forge, Quilt, ...)~~
 
 If you want something much simpler, [jaredlll08/MultiLoader-Template][ref-jared-template] is also a good start. 
 That template focuses on one specific Minecraft version, which is much more conventional.
@@ -21,20 +23,27 @@ less commonly interpreted as "that which goes beyond".
 
 ## Usage
 
-Simply clone the repository and start adding/removing subprojects based on your need. After that, you can start coding. 
-Remember, 
+1. Simply clone the repository and start adding/removing subprojects based on your need.
 
-  - Change the mod name from `ExampleMod` to something else.
-  - All shared code goes to `-base` projects.
-  - Loader-specific code goes to loader-specific projects. 
-  - Access Wideners used in `-base` projects must be duplicated in all loader-specific projects, unless some APIs you 
-    depend on have done so already. This will get more significant when you encounter a method/field that Forge's AT 
-    has exposed for you.
-  - Purge the entire `.git` directory and then `git init` if you need a fresh start of your `git` history.
+2. Purge the entire `.git` directory and then `git init` if you need a fresh start of your `git` history.
+
+3. Change the mod name from `ExampleMod` to something else, also replace other template things like `modId="test_multi_project_mod_please_ignore"`.
+
+4. As a compromise between directly copying files and using C-like Manifold macros, we encourage the use of symbolic links (soft links) to reduce duplicate code:
+    1. Run the following command in your terminal:
+    ```
+    git config --global core.symlinks true
+    ```
+    2. For Windows users:
+       1. Enable Developer Mode in system settings. 
+       2. In the project root directory, you will find a script named `softlink_create.bat`. To create a soft link, simply drag and drop the original file onto this .bat file (a.k.a. open it with the .bat file).
+    3. For Linux/macOS users, Creating symbolic links from the command line should be straightforward.
+
+Remember,
+
+ - Version-specific code goes to version-specific projects.
 
 All `build.gradle` files should give you enough hint about what do they do.
-
-*More coming soon*
 
 ### How to know which projects do I need?
 
@@ -51,11 +60,9 @@ Nevertheless, here are a few things to consider:
     - You have anything to do with world generation
   - *To be continued*
 
-## How to contribute
-
-*Coming soon*
-
 ## Credits
+
+Special thanks to 3TUSK, he made the previous version of Paramita.
 
 Special thanks to williewillus, Hurby, Alwinfy, et al. for their multi-loader project architecture used in Botania;
 without their pioneering work, this gigantic project layout will not be possible. 
